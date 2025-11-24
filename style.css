@@ -1,0 +1,55 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+
+}
+
+.container {
+  margin-top: auto;
+  display: flex;
+  height: 800px;
+  width: 800px;
+}
+
+/*
+.div {
+  background-color: blue;
+  flex: 1 1 auto;
+  height: 200px;
+  width: 200px;
+}
+
+
+/*
+.two {
+  background-color: blue;
+  border: solid;
+  border-width: 1px;
+  flex: 1 1 auto;
+  height: 200px;
+  width: 200px;
+}
+
+
+.three {
+  background-color: blue;
+  border: solid;
+  border-width: 1px;
+  flex: 1 1 auto;
+  height: 200px;
+  width: 200px;
+}
+
+.four {
+  background-color: blue;
+  border: solid;
+  border-width: 1px;
+  flex: 1 1 auto;
+  height: 200px;
+  width: 200px;
+*/
