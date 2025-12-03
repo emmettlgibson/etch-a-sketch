@@ -21,54 +21,99 @@ for (let i = 0; i < (4 * 4); i++) {
 
 const container = document.querySelector(".container");
 container.style.border = "inset"
+
 const box = document.createElement("div");
 box.classList.add(".box");
+
 const pixel = document.createElement("div");
 const button = document.querySelector("button");
 const wrap = document.querySelector(".wrap");
 const header = document.querySelector(".header");
 
+const clearButton = document.createElement("button");
+clearButton.classList.add("clearButton");
+clearButton.textContent = "Clear";
+header.appendChild(clearButton);
+
+const rainbow = document.createElement("button");
+rainbow.classList.add("rainbow");
+rainbow.textContent = "Rainbow";
+header.appendChild(rainbow)
+
+const gradient = document.createElement("button");
+gradient.classList.add("incrementOpacity");
+gradient.textContent = "Gradient";
+header.appendChild(gradient);
+
+const black = document.createElement("button");
+black.classList = "black";
+black.textContent = "Black";
+header.appendChild(black);
+
+let divOpacity = 0;
+
+
+
+function randomNumber() {
+  return Math.round(Math.random() * 255);
+  };
+
+
+
 function dimension(num) {
+      if (num === undefined) {
+        num = 16;
+      } 
+    
 
-  if (num === undefined) {
-    num = 16;
-  } 
+    for (let i = 0; i < num; i++) {
+      const box = document.createElement("div");
+      container.appendChild(box);
+      button.addEventListener("click", (e) => {
+        container.removeChild(box);
+      })
 
-for (let i = 0; i < num; i++) {
-  const box = document.createElement("div");
+        for(let j = 0; j < num; j++) {
+          const pixel = document.createElement("div");
+          pixel.classList.add("pixel");
+          pixel.style.flex = "1 1 auto";
+          pixel.style.height = 800/num + "px";
+          pixel.style.width = 800/num + "px";
+          box.appendChild(pixel);
 
-  container.appendChild(box);
-
-  button.addEventListener("click", (e) => {
-    container.removeChild(box);
-  })
-
-    for(let j = 0; j < num; j++) {
-
-      const pixel = document.createElement("div");
-      pixel.classList.add("pixel");
-      const allPixel = document.querySelectorAll("pixel")
-
-      pixel.style.flex = "1 1 auto";
-      pixel.style.height = 800/num + "px";
-      pixel.style.width = 800/num + "px";
-      box.appendChild(pixel);
-      pixel.addEventListener(("mousedown"), (e) => {
-        pixel.style.backgroundColor = "black";
-
-        button.addEventListener("click", (e) => {
-          box.removeChild(pixel);
-        })
-        clearButton.addEventListener("click", (e) => {
-          pixel.style.backgroundColor = "white";
-        })
+  pixel.addEventListener(("mouseover"), (e) => {
+    pixel.style.backgroundColor =`black` //black;
+      })
+  rainbow.addEventListener("click", (e) =>{
+    pixel.addEventListener(("mouseover"), (e) => {
+    pixel.style.backgroundColor =`rgb(${randomNumber()}, ${randomNumber()}, ${randomNumber()} )`;
+      })
     })
-    }
-}
+  gradient.addEventListener("click", (e) => {
+    let divOpacity = 0;
+    pixel.addEventListener(("mouseover"), (e) => {
+    pixel.style.opacity = `${divOpacity += 0.1}`;
+    pixel.style.backgroundColor =`black`;
+        })
+      })
+  black.addEventListener("click", (e) => {
+    pixel.addEventListener(("mouseover"), (e) => {
+    pixel.style.backgroundColor =`black`;
+        })
+      })
+  clearButton.addEventListener("click", (e) => {
+    pixel.style.backgroundColor = "white";
+  pixel.addEventListener("mouseover", (e) => {
+    divOpacity = 1;
+    pixel.style.opacity = `1`;
+      })
+    })
+  }
+ }
 };
 
 
-dimension(1);
+dimension();
 
 button.addEventListener("click", (e) => {
   let input = +prompt("Enter a number to change the dimensions of the grid(1-100)");
@@ -84,13 +129,6 @@ button.addEventListener("click", (e) => {
     }
   }
 })
-
-const clearButton = document.createElement("button");
-clearButton.classList.add("clearButton");
-clearButton.textContent = "Clear";
-header.appendChild(clearButton);
-
-
 
 /*
 const div = document.createElement("div");
@@ -108,27 +146,76 @@ box.appendChild(div);
 
 
 /*
-for (let i = 0;; i++) {
-  const question = +prompt("1-100");
-  if(question > 100 || (question < 1 && question > 0) || isNaN(question) === true || Number.isInteger(question) === false || question <= -1) {
-    question = +prompt("Enter a numer from 1-100");
-  } else if (question === 0 ) {
-    alert("Enter a number from 1-100")
-    break;
-  } else {
-    break;
-  }
+console.log(randomNumber());
+
+const color = document.querySelector(".randomColor");
+color.style.backgroundColor =`rgb(${randomNumber()}, ${randomNumber()}, ${randomNumber()} )`;
+color.style.height = "200px";
+color.style.width = "200px";
+
+color.addEventListener("click", (e) => {
+  color.style.backgroundColor =`rgb(${randomNumber()}, ${randomNumber()}, ${randomNumber()} )`;
+})
+
+
+
+function dimensionGradient(num) {
+  if (num === undefined) {
+    num = 16;
+  } 
+
+for (let i = 0; i < num; i++) {
+  const box = document.createElement("div");
+  container.appendChild(box);
+
+    for(let j = 0; j < num; j++) {
+      const pixel = document.createElement("div");
+      pixel.classList.add("pixel");
+      pixel.style.flex = "1 1 auto";
+      pixel.style.height = 800/num + "px";
+      pixel.style.width = 800/num + "px";
+      box.appendChild(pixel);
+      let divOpacity = 0;
+      pixel.addEventListener(("mouseover"), (e) => {
+        pixel.style.opacity = `${divOpacity += 0.1}`;
+        pixel.style.backgroundColor =`black`;
+    })
+
+    }
 }
+};
 */
 
-for (let i = 0;; i++) {
-  if(input > 100 || input < 0 || isNaN(input) === true || Number.isInteger(input) === false || input <= -1) {
-    input = +prompt("Enter a numer from 1-100");
-  } else if (input === 0 ) {
-    alert("Enter a number from 1-100")
-    break;
-  } else {
-    dimension(input)
-    break;
-  }
-}
+
+/*
+pixel.addEventListener(("mouseover"), (e) => {
+  pixel.style.backgroundColor =`black` //black;
+
+clearButton.addEventListener("click", (e) => {
+  pixel.style.backgroundColor = "white";
+  pixel.style.opacity = `${divOpacity = 1}`;
+    })
+
+    })
+    rainbow.addEventListener("click", (e) =>{
+      pixel.addEventListener(("mouseover"), (e) => {
+      pixel.style.backgroundColor =`rgb(${randomNumber()}, ${randomNumber()}, ${randomNumber()} )`;
+          })
+       })
+
+
+
+    gradient.addEventListener("click", (e) => {
+      let divOpacity = 0;
+      pixel.addEventListener(("mouseover"), (e) => {
+      pixel.style.opacity = `${divOpacity += 0.1}`;
+      pixel.style.backgroundColor =`black`;
+  })
+  })
+  black.addEventListener("click", (e) => {
+    pixel.addEventListener(("mouseover"), (e) => {
+    pixel.style.backgroundColor =`black`;
+})
+})
+*/
+
