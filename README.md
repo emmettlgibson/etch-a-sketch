@@ -1,4 +1,4 @@
-# etch-a-sketch
+# Etch-a-Sketch
 
 ## Etch-a-sketch project to show what I have learned about the DOM and everything I have learned so far
 
