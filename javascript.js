@@ -32,7 +32,7 @@ const header = document.querySelector(".header");
 
 const clearButton = document.createElement("button");
 clearButton.classList.add("clearButton");
-clearButton.textContent = "Clear";
+clearButton.textContent = "Clear - (Grid/Gradient)";
 header.appendChild(clearButton);
 
 const rainbow = document.createElement("button");
@@ -41,7 +41,7 @@ rainbow.textContent = "Rainbow";
 header.appendChild(rainbow)
 
 const gradient = document.createElement("button");
-gradient.classList.add("incrementOpacity");
+gradient.classList.add("gradient");
 gradient.textContent = "Gradient";
 header.appendChild(gradient);
 
@@ -50,7 +50,6 @@ black.classList = "black";
 black.textContent = "Black";
 header.appendChild(black);
 
-let divOpacity = 0;
 
 
 
@@ -93,7 +92,6 @@ function dimension(num) {
     let divOpacity = 0;
     pixel.addEventListener(("mouseover"), (e) => {
     pixel.style.opacity = `${divOpacity += 0.1}`;
-    pixel.style.backgroundColor =`black`;
         })
       })
   black.addEventListener("click", (e) => {
